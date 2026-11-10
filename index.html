@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f6f7f9" />
+  <meta name="description" content="Acadza ReportFix — AI-assisted question quality review." />
+  <title>ReportFix · Acadza Faculty Console</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">a<span>·</span></div><div><strong>ac adza</strong><small>ACADEMIC QUALITY</small></div></div>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="nav">
+        <a class="nav-item active" href="#queue"><span class="nav-icon">▦</span> Review queue <span class="nav-count" id="nav-open">—</span></a>
+        <a class="nav-item" href="#analytics"><span class="nav-icon">▥</span> Quality overview</a>
+        <a class="nav-item" href="#audit"><span class="nav-icon">◷</span> Audit log</a>
+      </nav>
+      <div class="sidebar-bottom"><div class="env-pill"><i></i> DEMO DATASET</div><div class="profile"><div class="avatar">F</div><div><b>Faculty reviewer</b><small>Content operations</small></div><span class="more">···</span></div></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><div class="crumb">Quality operations <span>/</span> <b>Report review</b></div><div class="top-actions"><span class="sync"><i></i> Dataset synced</span><button class="icon-btn" title="Notifications">♧</button><div class="avatar small">F</div></div></header>
+      <section class="page-head" id="queue"><div><div class="eyebrow">TUESDAY, 10 NOVEMBER 2026 <span>·</span> CONTENT HEALTH</div><h1>Question reports</h1><p class="subhead">Review student feedback, verify the evidence, and keep every correction accountable.</p></div><div class="head-right"><span class="live-tag"><i></i> Triage complete</span><button class="button secondary" id="export-btn">↓ Export results</button></div></section>
+      <section class="metrics" id="analytics">
+        <article class="metric"><div class="metric-top"><span>Incoming reports</span><span class="metric-icon blue">↗</span></div><strong id="m-reports">44</strong><small><b>44</b> across <b>43</b> questions</small></article>
+        <article class="metric"><div class="metric-top"><span>Verified defects</span><span class="metric-icon red">!</span></div><strong id="m-defects">—</strong><small>Require a correction or faculty action</small></article>
+        <article class="metric"><div class="metric-top"><span>Safe to apply</span><span class="metric-icon green">✓</span></div><strong id="m-auto">—</strong><small>Within approved repair scope</small></article>
+        <article class="metric"><div class="metric-top"><span>Faculty review</span><span class="metric-icon amber">◷</span></div><strong id="m-review">—</strong><small>Human decision required</small></article>
+      </section>
+      <section class="workbench">
+        <div class="queue-panel panel">
+          <div class="panel-head"><div><h2>Review queue</h2><p>Grouped by question · Highest risk first</p></div><span class="count-chip" id="queue-count">43 cases</span></div>
+          <div class="queue-controls"><label class="search"><span>⌕</span><input id="search" placeholder="Search question, report or comment" /></label><select id="filter"><option value="all">All cases</option><option value="faculty_review">Faculty review</option><option value="auto_apply">Safe fixes</option><option value="no_change">No change</option><option value="defect">Verified defects</option></select></div>
+          <div class="queue-list" id="queue-list"><div class="loading">Loading reports…</div></div>
+          <div class="queue-foot"><span id="queue-foot-text">Showing all cases</span><span>Sorted by risk &amp; report volume</span></div>
+        </div>
+        <div class="detail-panel panel" id="detail-panel"><div class="empty-state"><div class="empty-icon">✳</div><h2>Select a report</h2><p>Choose a question from the queue to inspect the original content, AI evidence and proposed change.</p></div></div>
+      </section>
+      <section class="bottom-grid">
+        <div class="panel insight-panel"><div class="panel-head"><div><h2>What needs attention</h2><p>Signals surfaced across this dataset</p></div><span class="subtle-tag">LIVE ANALYSIS</span></div><div id="insights" class="insights"></div></div>
+        <div class="panel audit-panel" id="audit"><div class="panel-head"><div><h2>Recent activity</h2><p>Review actions recorded in this browser</p></div><a href="#audit" id="view-audit">View all</a></div><div id="recent-audit" class="recent-audit"><div class="muted-empty">No actions taken yet.</div></div></div>
+      </section>
+      <footer>ACADZA REPORTFIX <span>·</span> AI-ASSISTED TRIAGE <span>·</span> FACULTY REMAINS IN CONTROL</footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <div class="modal-backdrop" id="modal" hidden><div class="modal"><div class="modal-head"><div><span class="eyebrow">FACULTY OVERRIDE</span><h2>Edit proposed change</h2></div><button class="icon-btn" id="modal-close">×</button></div><p class="modal-help">Edit the replacement value. This records a faculty edit; it does not silently modify the source dataset.</p><label class="field-label">Replacement</label><textarea id="edit-value" rows="3"></textarea><div class="modal-actions"><button class="button secondary" id="cancel-edit">Cancel</button><button class="button primary" id="save-edit">Save edited proposal</button></div></div></div>
+  <script src="/app.js"></script>
+</body>
+</html>
